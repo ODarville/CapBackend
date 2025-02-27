@@ -16,7 +16,7 @@ async function createReview(req, res) {
 // R(ead)
 async function getReviews(req, res) {
     try {
-        const reviews = await Review.find();
+        const reviews = await Review.find({});
         res.status(200).json(reviews);
     } catch (error) {
         res.status(400).json({ message: error.message });
@@ -26,7 +26,8 @@ async function getReviews(req, res) {
 // U(pdate)
 async function updateReview(req, res) {
     try {
-        const review = await Review.findByIdAndUpdate(req.params.id, req.body,);
+        // new true will return the updated review
+        const review = await Review.findByIdAndUpdate(req.params.id, req.body, { new: true });
         res.status(200).json(review);
     } catch (error) {
         res.status(400).json({ message: error.message });

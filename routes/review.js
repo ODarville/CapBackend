@@ -5,14 +5,13 @@
 const express = require('express');
 const router = express.Router();
 const reviewController = require('../controllers/review');
-const Review = require('../models/review');
 
 // C
 router.post('/', reviewController.createReview);
 // R
 router.get('/', reviewController.getReviews);
 // U
-router.put('/:id', reviewController.updateReview);
+router.patch('/:id', reviewController.updateReview);
 // D
 router.delete('/:id', reviewController.deleteReview);
 

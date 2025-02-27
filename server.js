@@ -6,6 +6,7 @@ const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
 require("dotenv").config();
+require('./config/database.js');
 
 const PORT = 3000;
 
@@ -13,6 +14,9 @@ const PORT = 3000;
 //////////////////////////
 ////    Middleware    ////
 //////////////////////////
+
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 
 app.use((req, res, next) => {
     const time = new Date();
@@ -30,8 +34,7 @@ app.use((req, res, next) => {
 
 
 
-app.use(express.urlencoded({ extended: true }));
-app.use(express.json());
+
 
 //////////////////////////
 ////      Routes      ////
