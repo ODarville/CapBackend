@@ -7,6 +7,11 @@ const app = express();
 const mongoose = require('mongoose');
 require("dotenv").config();
 require('./config/database.js');
+const cors = require('cors');
+const corsOptions = {
+    origin: 'http://localhost:5173',
+}
+app.use(cors(corsOptions));
 
 const PORT = 3000;
 
@@ -20,7 +25,6 @@ app.use(express.json());
 
 app.use((req, res, next) => {
     const time = new Date();
-  
     console.log(
       `-----
   ${time.toLocaleTimeString()}: Received a ${req.method} request to ${req.url}.`
